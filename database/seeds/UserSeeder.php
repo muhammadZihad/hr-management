@@ -1,0 +1,59 @@
+<?php
+
+use App\Profile;
+use App\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $user = User::create([
+            'name' => 'Hero',
+            'email' => 'hero@mail.com',
+            'admin' => 1,
+            'salary' => 35000,
+            'department_id' => 1,
+            'designation_id' => 3,
+            'role_id' => 4,
+            'password' => Hash::make('12345')
+        ]);
+        $p = new Profile;
+        $p->fname = 'Big';
+        $p->lname = 'Hero';
+        $p->city = 'Dhaka';
+        $p->national_id = '201942554839234';
+        $p->country = 'Bangladesh';
+        $p->address = 'Dhanmondi-27';
+        $p->age = 23;
+
+        $user->profile()->save($p);
+
+        $user2 = User::create([
+            'name' => 'Zero',
+            'email' => 'zero@mail.com',
+            'admin' => 0,
+            'salary' => 3000,
+            'department_id' => 2,
+            'designation_id' => 3,
+            'role_id' => 4,
+            'password' => Hash::make('12345')
+        ]);
+        $p = new Profile;
+        $p->fname = 'Big';
+        $p->lname = 'Zero';
+        $p->city = 'Dhaka';
+        $p->national_id = '201942534534543';
+        $p->country = 'Bangladesh';
+        $p->address = 'Puran Dhaka';
+        $p->age = 72;
+
+        $user2->profile()->save($p);
+    }
+}
