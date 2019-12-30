@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="col-md-9 border-left border-dark">
-                        <table class="c-table">
+                        <table class="c-table table-bordered">
                             <tr>
                                 <td class="h6">First Name :</td>
                                 <td class="pl-5 py-1 h5">{{$item->profile->fname}}</td>
@@ -27,6 +27,16 @@
                                 <td class="h6">Email :</td>
                                 <td class="pl-5 py-1 h5">{{$item->email}}</td>
                             </tr>
+                            @if ($item->id==auth()->user()->id || auth()->user()->admin)
+                            <tr>
+                                <td class="h6">Salary :</td>
+                                <td class="pl-5 py-1 h5">{{$item->salary}}</td>
+                            </tr>
+                            <tr>
+                                <td class="h6">National Id :</td>
+                                <td class="pl-5 py-1 h5">{{$item->profile->national_id}}</td>
+                            </tr>
+                            @endif
                             <tr>
                                 <td class="h6">Department :</td>
                                 <td class="pl-5 py-1 h5">{{$item->department->name}}</td>

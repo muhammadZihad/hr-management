@@ -20,9 +20,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                        $i=1;
-                        @endphp
                         @foreach ($list as $item)
                         <tr>
                             <td class="text-center text-muted">#{{$loop->iteration}}</td>

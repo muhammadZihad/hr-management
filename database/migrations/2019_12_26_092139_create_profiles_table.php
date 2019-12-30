@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('city');
+            $table->string('phone');
             $table->string('national_id');
             $table->string('country_id');
             $table->date('dob')->nullable();
