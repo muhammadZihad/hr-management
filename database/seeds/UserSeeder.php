@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'Hero',
             'email' => 'hero@mail.com',
             'admin' => 1,
+            'type_id' => 1,
             'salary' => 35000,
             'department_id' => 1,
             'designation_id' => 3,
@@ -29,9 +30,9 @@ class UserSeeder extends Seeder
         $p->lname = 'Hero';
         $p->city = 'Dhaka';
         $p->national_id = '201942554839234';
-        $p->country = 'Bangladesh';
+        $p->country_id = 1;
         $p->address = 'Dhanmondi-27';
-        $p->age = 23;
+
 
         $user->profile()->save($p);
 
@@ -39,6 +40,7 @@ class UserSeeder extends Seeder
             'name' => 'Zero',
             'email' => 'zero@mail.com',
             'admin' => 0,
+            'type_id' => 2,
             'salary' => 3000,
             'department_id' => 2,
             'designation_id' => 3,
@@ -50,9 +52,9 @@ class UserSeeder extends Seeder
         $p->lname = 'Zero';
         $p->city = 'Dhaka';
         $p->national_id = '201942534534543';
-        $p->country = 'Bangladesh';
+        $p->country_id = 3;
         $p->address = 'Puran Dhaka';
-        $p->age = 72;
+
 
         $user2->profile()->save($p);
     }

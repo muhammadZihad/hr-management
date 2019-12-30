@@ -9,7 +9,7 @@ class Profile extends Model
     protected $fillable = [
         'fname',
         'lname',
-        'country',
+        'country_id',
         'user_id',
         'city',
         'dob',
@@ -21,5 +21,9 @@ class Profile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }
