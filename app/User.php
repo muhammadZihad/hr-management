@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Attendance;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
     public function attendances(){
         return $this->belongsToMany('App\Attendance')->withPivot('check_in');
     }
@@ -83,5 +85,9 @@ class User extends Authenticatable
             return false;
         }
         
+
+    public function deleteImage()
+    {
+        Storage::delete($this->image);
     }
 }
