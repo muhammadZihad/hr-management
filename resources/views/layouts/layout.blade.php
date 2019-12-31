@@ -34,8 +34,13 @@
                 color: #eee !important;
             }
 
-            select {
+            select,
+            .c-table {
                 text-transform: capitalize;
+            }
+
+            .c-table tr td {
+                padding: 5px 10px;
             }
         </style>
     </head>
