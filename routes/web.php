@@ -22,3 +22,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('employee', 'UserController');
+
+// Attendance
+Route::get('/checkIn/{id}', [
+    'uses' => 'AttendanceController@checkIn',
+    'as' => 'checkIn'
+]);
