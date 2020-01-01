@@ -28,3 +28,7 @@ Route::get('/checkIn/{id}', [
     'uses' => 'AttendanceController@checkIn',
     'as' => 'checkIn'
 ]);
+Route::get('/checkOut/{id}', [
+    'uses' => 'AttendanceController@checkOut',
+    'as' => 'checkOut'
+]);

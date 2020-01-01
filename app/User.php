@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function attendances()
     {
-        return $this->belongsToMany('App\Attendance')->withPivot('check_in');
+        return $this->belongsToMany('App\Attendance')->withPivot('check_in','check_out');
     }
 
 

@@ -19,7 +19,7 @@ class CreateAttendanceUserTable extends Migration
             $table->integer('user_id');
             // $table->integer('day_id');
             $table->time('check_in');
-            // $table->time('check_out');
+            $table->time('check_out')->nullable();
             // $table->integer('check_in_status');
             // $table->integer('check_out_status');
             $table->timestamps();

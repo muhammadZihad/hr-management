@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Attendance;
 use Carbon\Carbon;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
@@ -97,7 +99,20 @@ class AttendanceController extends Controller
             'check_in' => $t->toTimeString(),
         ]);
 
-        return "successfull";
+        return redirect()->back();
 
+    }
+
+    public function checkOut($id){
+        
+        $t = Carbon::now('+6:00');
+        $user_id = $id;
+        $ck = User::find($user_id)->attendances()->where('date', $t->toDateString())->firstOrFail();
+        if ($ck->pivot->check_out == Null) {
+            User::find($user_id)->attendances()->updateExistingPivot($ck->id, ['check_out' => $t->toTimeString()]);
+        }
+        return redirect()->back();
+        
+        
     }
 }
