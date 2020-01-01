@@ -73,9 +73,6 @@ class User extends Authenticatable
     {
         $user_id = auth()->user()->id;
         $cdate = Carbon::now('+6:00')->toDateString();
-        // dd($cdate);
-        // return User::find($user_id)->attendances()->where('date', $cdate)->first()->pivot->check_in;
-        // return User::find($user_id)->attendances()->where('date', $cdate)->first()->pivot->check_in;
         $user = User::find($user_id)->attendances();
         if ($user) {
             if ($user->where('date', $cdate)->first() != null) {
