@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Attendance;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
@@ -62,29 +63,30 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function attendances(){
+    public function attendances()
+    {
         return $this->belongsToMany('App\Attendance')->withPivot('check_in');
     }
 
 
-    public function isCheckedIn(){
-        $user_id = Auth::id();
+    public function isCheckedIn()
+    {
+        $user_id = auth()->user()->id;
         $cdate = Carbon::now('+6:00')->toDateString();
         // dd($cdate);
         // return User::find($user_id)->attendances()->where('date', $cdate)->first()->pivot->check_in;
         // return User::find($user_id)->attendances()->where('date', $cdate)->first()->pivot->check_in;
         $user = User::find($user_id)->attendances();
         if ($user) {
-            if($user->where('date', $cdate)->firstOrFail()){
+            if ($user->where('date', $cdate)->first() != null) {
                 return User::find($user_id)->attendances()->where('date', $cdate)->firstOrFail()->pivot->check_in;
-            }
-            else{
+            } else {
                 return false;
             }
         } else {
             return false;
         }
-        
+    }
 
     public function deleteImage()
     {
