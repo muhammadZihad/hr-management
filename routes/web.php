@@ -32,3 +32,11 @@ Route::get('/checkOut/{id}', [
     'uses' => 'AttendanceController@checkOut',
     'as' => 'checkOut'
 ]);
+Route::get('/attendances', [
+    'uses' => 'AttendanceController@index',
+    'as' => 'attendances'
+]);
+Route::get('/single-attendance/{id}', [
+    'uses' => 'AttendanceController@singleAttendance',
+    'as' => 'single.attendance'
+]);

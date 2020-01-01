@@ -72,7 +72,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href={{ route('attendances') }}>
                     <i class="metismenu-icon fas fa-check-double">
                     </i>Attendences
                 </a>
