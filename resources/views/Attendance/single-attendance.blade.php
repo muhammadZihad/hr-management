@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">Attendances of: {{ $user->name }}</div>
+    <div class="card-header">Attendances of: {{ $user->name }} </div>
 
     <div class="card-body">
 
@@ -31,7 +31,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($user->attendances as $a)
+                    @foreach ($attendances as $a)
                         <tr>
                             
                             <td>
@@ -56,8 +56,12 @@
                         </tr>
                     @endforeach                  
                 </tbody>
+                
             </table>
         </div>
+    </div>
+    <div>
+        {{ $attendances->links() }}
     </div>
 </div>
 

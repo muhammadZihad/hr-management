@@ -141,6 +141,6 @@ class AttendanceController extends Controller
 
     public function singleAttendance($id){
         $u = User::find($id);
-        return view('attendance.single-attendance')->with('user', $u);
+        return view('attendance.single-attendance')->with('attendances', $u->attendances()->paginate(20))->with('user', $u);
     }
 }
