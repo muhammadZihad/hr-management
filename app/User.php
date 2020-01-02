@@ -67,7 +67,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Attendance')->withPivot('check_in');
     }
-
+    public function schedules()
+    {
+        return $this->belongsToMany(Schedule::class);
+    }
 
     public function isCheckedIn()
     {

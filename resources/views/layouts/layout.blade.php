@@ -22,7 +22,7 @@
     -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
         <script src="https://kit.fontawesome.com/f2962bac2e.js"></script>
-        @yield('upperjs')
+        @yield('top')
 
         <style>
             .logo-src.t-color {

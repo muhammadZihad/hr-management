@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('employee', 'UserController');
+Route::post('/users/search', 'UserController@search')->name('users.search');
+Route::resource('schedule', 'ScheduleController');
 
 // Attendance
 Route::get('/checkIn/{id}', [

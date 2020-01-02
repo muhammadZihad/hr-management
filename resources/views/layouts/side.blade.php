@@ -40,7 +40,7 @@
             <li>
                 <a href="forms-validation.html">
                     <i class="metismenu-icon fas fa-user-shield">
-                    </i>Users
+                    </i>Admin
                 </a>
             </li>
             <li>
@@ -51,7 +51,7 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="{{route('employee.index')}} ">
                             <i class="metismenu-icon"></i>
                             All Employee
                         </a>
@@ -60,6 +60,27 @@
                         <a href="{{route('employee.create')}}">
                             <i class="metismenu-icon">
                             </i>New Employee
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="metismenu-icon fas fa-tasks"></i>
+                    Schedule
+                    <i class="metismenu-state-icon fas fa-sort-down"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{{route('schedule.index')}}">
+                            <i class="metismenu-icon"></i>
+                            All schedules
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('schedule.create')}}">
+                            <i class="metismenu-icon">
+                            </i>New Schedule
                         </a>
                     </li>
                 </ul>
@@ -81,12 +102,6 @@
                 <a href="#">
                     <i class="metismenu-icon fas fa-donate">
                     </i>Salary
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="metismenu-icon fas fa-tasks">
-                    </i>Schedule
                 </a>
             </li>
             <li>
