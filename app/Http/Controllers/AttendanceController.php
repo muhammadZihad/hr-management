@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Attendance;
 use Carbon\Carbon;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
@@ -15,7 +17,8 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+        $attendances = Attendance::orderBy('created_at', 'desc')->paginate(20);
+        return view('attendance.index')->with('attendances', $attendances);
     }
 
     /**
@@ -88,16 +91,56 @@ class AttendanceController extends Controller
     {
         $t = Carbon::now('+6:00');
         $user_id = $id;
+        $timeTen = new Carbon('today 10am', '+6:00');
+
 
         $attendance = Attendance::create([
             'date' => $t->toDateString(),
         ]);
 
-        $attendance->users()->attach($user_id, [
-            'check_in' => $t->toTimeString(),
-        ]);
+        if ($timeTen >= Carbon::now('+6:00')) {
+            $attendance->users()->attach($user_id, [
+                'check_in' => $t->toTimeString(),
+                'check_in_status' => "In Time",
+            ]);
+        } else {
+            $attendance->users()->attach($user_id, [
+                'check_in' => $t->toTimeString(),
+                'check_in_status' => 'Late',
+            ]);
+        }
+        
 
-        return "successfull";
+        return redirect()->back();
 
+    }
+
+    public function checkOut($id){
+        
+        $t = Carbon::now('+6:00');
+        $timeFive = new Carbon('today 5pm', '+6:00');
+        $user_id = $id;
+        $ck = User::find($user_id)->attendances()->where('date', $t->toDateString())->firstOrFail();
+        if ($ck->pivot->check_out == Null) {
+            if($timeFive >= Carbon::now('+6:00')){
+                User::find($user_id)->attendances()->updateExistingPivot($ck->id, [
+                    'check_out' => $t->toTimeString(),
+                    'check_out_status' => 'Early',
+                    ]);
+            }
+            else{
+                User::find($user_id)->attendances()->updateExistingPivot($ck->id, [
+                    'check_out' => $t->toTimeString(),
+                    'check_out_status' => 'In Time',
+                    ]);
+            }
+        }
+        return redirect()->back();    
+        
+    }
+
+    public function singleAttendance($id){
+        $u = User::find($id);
+        return view('attendance.single-attendance')->with('attendances', $u->attendances()->paginate(20))->with('user', $u);
     }
 }

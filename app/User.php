@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function attendances()
     {
-        return $this->belongsToMany('App\Attendance')->withPivot('check_in');
+        return $this->belongsToMany('App\Attendance')->withPivot('check_in','check_out','check_in_status','check_out_status');
     }
 
 
@@ -76,13 +76,31 @@ class User extends Authenticatable
         $user = User::find($user_id)->attendances();
         if ($user) {
             if ($user->where('date', $cdate)->first() != null) {
-                return User::find($user_id)->attendances()->where('date', $cdate)->firstOrFail()->pivot->check_in;
+                return $user->where('date', $cdate)->firstOrFail()->pivot->check_in;
             } else {
                 return false;
             }
         } else {
             return false;
         }
+    }
+
+    public function isCheckedOut(){
+        $user_id = auth()->user()->id;
+        $cdate = Carbon::now('+6:00')->toDateString();
+        $user = User::find($user_id)->attendances();
+        if($user){
+            if($user->where('date', $cdate)->first() != null){
+                return $user->where('date', $cdate)->firstOrFail()->pivot->check_out;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+
     }
 
     public function deleteImage()
