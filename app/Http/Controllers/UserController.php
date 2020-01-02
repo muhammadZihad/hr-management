@@ -72,6 +72,7 @@ class UserController extends Controller
         $prof->city = $request->city;
         $prof->address = $request->address;
         $prof->national_id = $request->id_no;
+        $prof->phone = $request->phone;
         $prof->dob = $request->dob;
         $prof->country_id = $request->country;
         $user->profile()->save($prof);
@@ -88,6 +89,11 @@ class UserController extends Controller
     public function show($id)
     {
         return view('profile.sin')->with('item', User::find($id));
+    }
+    public function search(Request $request)
+    {
+        $user = User::where('name', 'REGEXP', '.*' . $request->name . '.*')->get();
+        return view('emp.list')->with('list', $user);
     }
 
     /**
@@ -142,8 +148,9 @@ class UserController extends Controller
         $user->profile->address = $request->address;
         $user->profile->national_id = $request->id_no;
         $user->profile->dob = $request->dob;
+        $user->profile->phone = $request->phone;
         $user->profile->country_id = $request->country;
-        $user->save();
+        $user->profile->save();
 
 
         return view('profile.sin')->with('item', User::find($id));

@@ -86,7 +86,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Type</label>
                                 <select name="type" id="" class="form-control">
@@ -99,18 +99,25 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Salary Amount</label>
                                 <input type="number" class="form-control" value="{{$user->salary}}" name="salary"
                                     required>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">National ID</label>
                                 <input type="text" class="form-control" value=" {{$user->profile->national_id}} "
                                     name="id_no">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Phone</label>
+                                <input type="text" class="form-control" value=" {{$user->profile->phone}} "
+                                    name="phone">
                             </div>
                         </div>
                     </div>

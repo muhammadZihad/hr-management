@@ -47,6 +47,10 @@
                                 <td class="h6">National Id :</td>
                                 <td class="pl-5 py-1 h6"><b>{{$item->profile->national_id}}</td>
                             </tr>
+                            <tr>
+                                <td class="h6">Date of Birth :</td>
+                                <td class="pl-5 py-1 h6"><b>{{$item->profile->dob}}</td>
+                            </tr>
                             @endif
                             <tr>
                                 <td class="h6">Department :</td>
