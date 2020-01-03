@@ -50,7 +50,7 @@ class ScheduleController extends Controller
             'status' => 'Running',
             'leader_id' => $request->leader,
             'from' => $request->from,
-            'to' => $request->to,
+            'to' => $request->to
         ]);
         $schedule->users()->attach($request->users);
         return redirect()->back();
