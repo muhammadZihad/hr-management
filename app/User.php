@@ -71,7 +71,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Schedule::class);
     }
+    public function vacations(){
+        return $this->belongsToMany(Vacation::class);
+    }
 
+
+    // Custom Methods
     public function isCheckedIn()
     {
         $user_id = auth()->user()->id;

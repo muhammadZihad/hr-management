@@ -10,4 +10,6 @@
             <a href="{{ route('checkOut', ['id' => Auth::id()]) }}" class="btn btn-danger">Check Out</a>
         @endif
     @endif
+
+    <a href="{{ route('askVacation')}}" class="btn btn-info">Ask for vacation</a>
 @endsection

@@ -43,3 +43,13 @@ Route::get('/single-attendance/{id}', [
     'uses' => 'AttendanceController@singleAttendance',
     'as' => 'single.attendance'
 ]);
+
+// Vacation
+Route::get('/ask-vacation', [
+    'uses' => 'VacationController@create',
+    'as' => 'askVacation'
+]);
+Route::post('/submit-vacation', [
+    'uses' => 'VacationController@store',
+    'as' => 'submitVacation'
+]);
