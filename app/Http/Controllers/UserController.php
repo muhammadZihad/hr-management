@@ -142,6 +142,7 @@ class UserController extends Controller
         } else {
             $user->admin = 0;
         }
+        $user->save();
         $user->profile->fname = $request->fname;
         $user->profile->lname = $request->lname;
         $user->profile->city = $request->city;

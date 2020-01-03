@@ -64,6 +64,7 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
+        $schedule = Schedule::find($id);
         return view('schedule.sin')
             ->with('users', User::all())
             ->with('item', Schedule::find($id));
