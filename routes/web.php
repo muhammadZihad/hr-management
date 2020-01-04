@@ -56,3 +56,15 @@ Route::post('/submit-vacation', [
     'uses' => 'VacationController@store',
     'as' => 'submitVacation'
 ]);
+Route::get('/vacation-request', [
+    'uses' => 'VacationController@index',
+    'as' => 'vacationRequest'
+]);
+Route::get('/vacation-approve/{id}', [
+    'uses' => 'VacationController@vacApprove',
+    'as' => 'vac.approve'
+]);
+Route::get('/vacation-reject/{id}', [
+    'uses' => 'VacationController@vacReject',
+    'as' => 'vac.reject'
+]);

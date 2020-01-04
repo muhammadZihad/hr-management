@@ -86,9 +86,9 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('vacationRequest') }}">
                     <i class="metismenu-icon fas fa-sign-out-alt">
-                    </i>Leave
+                    </i>Vacation
                 </a>
             </li>
 
