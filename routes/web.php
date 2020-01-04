@@ -53,3 +53,7 @@ Route::post('/submit-vacation', [
     'uses' => 'VacationController@store',
     'as' => 'submitVacation'
 ]);
+Route::get('/vacation-request', [
+    'uses' => 'VacationController@index',
+    'as' => 'vacationRequest'
+]);

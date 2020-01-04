@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vacation;
+use App\User;
 
 class VacationController extends Controller
 {
@@ -15,6 +16,7 @@ class VacationController extends Controller
     public function index()
     {
         
+        return view('Vacation.index')->with('vac', Vacation::all());
     }
 
     /**
@@ -24,7 +26,7 @@ class VacationController extends Controller
      */
     public function create()
     {
-        return view('Vacation.index');
+        return view('Vacation.ask-vacation');
     }
 
     /**
