@@ -99,7 +99,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('salary.index') }}">
                     <i class="metismenu-icon fas fa-donate">
                     </i>Salary
                 </a>

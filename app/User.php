@@ -65,16 +65,21 @@ class User extends Authenticatable
 
     public function attendances()
     {
-        return $this->belongsToMany('App\Attendance')->withPivot('check_in','check_out','check_in_status','check_out_status');
+        return $this->belongsToMany('App\Attendance')->withPivot('check_in', 'check_out', 'check_in_status', 'check_out_status');
     }
     public function schedules()
     {
         return $this->belongsToMany(Schedule::class);
     }
-    public function vacations(){
+    public function vacations()
+    {
         return $this->belongsToMany(Vacation::class);
     }
 
+    public function salaries()
+    {
+        return $this->hasMany(Salary::class);
+    }
 
     // Custom Methods
     public function isCheckedIn()
@@ -93,22 +98,20 @@ class User extends Authenticatable
         }
     }
 
-    public function isCheckedOut(){
+    public function isCheckedOut()
+    {
         $user_id = auth()->user()->id;
         $cdate = Carbon::now('+6:00')->toDateString();
         $user = User::find($user_id)->attendances();
-        if($user){
-            if($user->where('date', $cdate)->first() != null){
+        if ($user) {
+            if ($user->where('date', $cdate)->first() != null) {
                 return $user->where('date', $cdate)->firstOrFail()->pivot->check_out;
-            }
-            else{
+            } else {
                 return false;
             }
-        }
-        else{
+        } else {
             return false;
         }
-
     }
 
     public function deleteImage()

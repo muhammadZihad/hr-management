@@ -22,6 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Employees and Profiles
 Route::resource('employee', 'UserController');
 Route::post('/users/search', 'UserController@search')->name('users.search');
 
@@ -56,6 +58,7 @@ Route::post('/submit-vacation', [
     'uses' => 'VacationController@store',
     'as' => 'submitVacation'
 ]);
+
 Route::get('/vacation-request', [
     'uses' => 'VacationController@index',
     'as' => 'vacationRequest'
@@ -68,3 +71,7 @@ Route::get('/vacation-reject/{id}', [
     'uses' => 'VacationController@vacReject',
     'as' => 'vac.reject'
 ]);
+
+// Salary
+Route::resource('salary', 'SalaryController');
+// Route::get('/create', 'SalaryController');
