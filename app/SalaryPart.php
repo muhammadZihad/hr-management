@@ -9,7 +9,8 @@ class SalaryPart extends Model
     protected $fillable  = [
         'salary_id',
         'amount',
-        'payer_id'
+        'payer_id',
+        'payer_name'
     ];
 
     public function salary()

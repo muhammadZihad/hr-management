@@ -17,6 +17,7 @@ class CreateSalaryPartsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('salary_id');
             $table->integer('payer_id');
+            $table->string('payer_name');
             $table->float('amount');
             $table->timestamps();
         });

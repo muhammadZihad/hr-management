@@ -18,7 +18,7 @@ class CreateSalariesTable extends Migration
             $table->integer('user_id');
             $table->float('paid_amount');
             $table->float('due_amount');
-            $table->enum('status', [0, 1, 2]);
+            $table->enum('status', [0, 1, 2]); // 0 = Due , 1 = Pending , 2 = Paid
             $table->timestamps();
         });
     }
