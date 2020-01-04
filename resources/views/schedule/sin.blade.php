@@ -5,7 +5,13 @@
 <div class="row">
     <div class="col-12">
         <div class="main-card card">
-            <div class="card-header">{{ $item->title }}</div>
+            <div class="card-header">{{ $item->title }}
+                @if (auth()->user()->id == $item->leader_id || auth()->user()->admin)
+                <div class="btn-actions-pane-right">
+                    <a class="btn btn-sm btn-success" href="{{ route('schedule.edit',$item->id) }}">Update</a>
+                </div>
+                @endif
+            </div>
             <div class="card-body">
 
                 <div class="row">
@@ -20,10 +26,7 @@
                                     </tr>
                                     <tr>
                                         <td>Description</td>
-                                        <td class="h6">{{ $item->description }} Lorem ipsum dolor sit amet, consectetur
-                                            adipisicing elit. Nesciunt amet magnam, magni, ea incidunt esse quae eum
-                                            perspiciatis quibusdam exercitationem facere dignissimos sunt sequi
-                                            repellendus nobis commodi! Cum, vel animi.</td>
+                                        <td class="h6">{{ $item->description }}</td>
                                     </tr>
                                     <tr>
                                         <td>Start Date</td>

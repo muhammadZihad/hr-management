@@ -1,7 +1,18 @@
 @extends('layouts.layout')
 
 @section('content')
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul class="list-group">
+        @foreach ($errors->all() as $i)
+        <li class="list-group-item">
+            {{$i}}
 
+        </li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="row">
     <div class="col-md-12">
         <div class="main-card mb-3 card">
@@ -69,7 +80,7 @@
                                         <label for="exampleInputPassword1">Status</label>
                                         <select class="form-control" name="status" id="" aria-placeholder="Select 1">
                                             <option value="Running">Running</option>
-                                            <option value="Done">Done</option>
+                                            <option value="Completed">Completed</option>
                                         </select>
                                     </div>
                                 </div>
@@ -87,23 +98,10 @@
                             </div>
                             <button type="submit" class="btn btn-success">Update</button>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
-
-@if (!auth()->user()->admin)
-<script>
-    let arr =  document.querySelectorAll('input');
-    arr.forEach(element => {
-       element.disabled = true; 
-    });
-    document.querySelector('textarea').disabled = true;
-    document.querySelector('select').disabled = true;
-</script>
-@endif
-
 
 
 @endsection

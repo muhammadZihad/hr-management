@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('single.attendance',auth()->user()->id) }}">
                     <i class="metismenu-icon fas fa-user-check">
                     </i>My Attendences
                 </a>
@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('myschedule') }}">
                     <i class="metismenu-icon fas fa-bell">
                     </i>My Schedule
                 </a>

@@ -67,7 +67,12 @@ class ScheduleController extends Controller
         $schedule = Schedule::find($id);
         return view('schedule.sin')
             ->with('users', User::all())
-            ->with('item', Schedule::find($id));
+            ->with('item', $schedule);
+    }
+
+    public function mySchedule()
+    {
+        return view('schedule.list')->with('list', auth()->user()->schedules);
     }
 
     /**
@@ -78,7 +83,10 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $schedule = Schedule::find($id);
+        return view('schedule.update')
+            ->with('users', User::all())
+            ->with('item', $schedule);
     }
 
     /**
@@ -90,7 +98,23 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'fromDate' => 'required',
+            'toDate' => 'required',
+            'users' => 'required'
+        ]);
+        $schedule = Schedule::find($id);
+        $schedule->title = $request->title;
+        $schedule->description = $request->description;
+        $schedule->status = $request->status;
+        $schedule->leader_id = $request->leader;
+        $schedule->from = $request->fromDate;
+        $schedule->to = $request->toDate;
+
+        $schedule->users()->sync($request->users);
+        $schedule->save();
     }
 
     /**

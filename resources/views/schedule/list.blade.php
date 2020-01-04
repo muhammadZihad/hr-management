@@ -7,11 +7,6 @@
     <div class="col-md-12">
         <div class="main-card mb-3 card">
             <div class="card-header">Schedules
-                @admin
-                <div class="btn-actions-pane-right">
-                    <a href="{{route('schedule.create')}}" class="btn btn-success">+Add Schedule</a>
-                </div>
-                @endadmin
             </div>
             <div class="table-responsive">
                 <table class="align-middle mb-0 table table-borderless table-striped table-hover sortable">

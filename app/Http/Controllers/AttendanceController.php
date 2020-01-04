@@ -109,37 +109,36 @@ class AttendanceController extends Controller
                 'check_in_status' => 'Late',
             ]);
         }
-        
+
 
         return redirect()->back();
-
     }
 
-    public function checkOut($id){
-        
+    public function checkOut($id)
+    {
+
         $t = Carbon::now('+6:00');
         $timeFive = new Carbon('today 5pm', '+6:00');
         $user_id = $id;
         $ck = User::find($user_id)->attendances()->where('date', $t->toDateString())->firstOrFail();
         if ($ck->pivot->check_out == Null) {
-            if($timeFive >= Carbon::now('+6:00')){
+            if ($timeFive >= Carbon::now('+6:00')) {
                 User::find($user_id)->attendances()->updateExistingPivot($ck->id, [
                     'check_out' => $t->toTimeString(),
                     'check_out_status' => 'Early',
-                    ]);
-            }
-            else{
+                ]);
+            } else {
                 User::find($user_id)->attendances()->updateExistingPivot($ck->id, [
                     'check_out' => $t->toTimeString(),
                     'check_out_status' => 'In Time',
-                    ]);
+                ]);
             }
         }
-        return redirect()->back();    
-        
+        return redirect()->back();
     }
 
-    public function singleAttendance($id){
+    public function singleAttendance($id)
+    {
         $u = User::find($id);
         return view('attendance.single-attendance')->with('attendances', $u->attendances()->paginate(20))->with('user', $u);
     }

@@ -24,7 +24,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('employee', 'UserController');
 Route::post('/users/search', 'UserController@search')->name('users.search');
+
+// Schedule
 Route::resource('schedule', 'ScheduleController');
+Route::get('/myschedule', 'ScheduleController@mySchedule')->name('myschedule');
 
 // Attendance
 Route::get('/checkIn/{id}', [
