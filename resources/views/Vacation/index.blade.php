@@ -25,7 +25,8 @@
                             @foreach ($v->users as $user)
                                 @foreach ($user->vacations as $uvac)
                                 @php
-                                    $sUser = $uvac->where('status','approved')->orWhere('status','rejected')->first()
+                                    // $sUser = $uvac->where('status','approved')->orWhere('status','rejected')->first()
+                                    $sUser = $uvac->where('status', null)->first()
                                 @endphp
                                     @if ($sUser)
                                         <tr>
