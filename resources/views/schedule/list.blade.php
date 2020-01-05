@@ -31,14 +31,14 @@
                                     <div class="widget-content-wrapper">
                                         <div class="widget-content-left flex2">
                                             <div class="widget-heading">{{$item->title}}</div>
-                                            <div class="widget-subheading opacity-7">{{$item->from_Date}} to
-                                                {{$item->to_Date}}
+                                            <div class="widget-subheading opacity-7">{{$item->from}} to
+                                                {{$item->to}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="">{{$item->description}}</td>
+                            <td width="50%">{{$item->description}}</td>
                             <td class="text-center">
                                 <div class="badge badge-warning">{{$item->status}}</div>
                             </td>
@@ -53,10 +53,9 @@
                 </table>
             </div>
             <div class="d-block text-center card-footer">
-                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i
-                        class="pe-7s-trash btn-icon-wrapper">
-                    </i></button>
-                <button class="btn-wide btn btn-success">Save</button>
+                @if ($list->count()==0)
+                No schedule here
+                @endif
             </div>
         </div>
     </div>
@@ -64,4 +63,12 @@
 
 
 
+@endsection
+
+@section('top')
+<style>
+    td {
+        max-width: 40% !important;
+    }
+</style>
 @endsection

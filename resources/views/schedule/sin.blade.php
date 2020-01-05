@@ -58,7 +58,7 @@
                                         <th>Email</td>
                                         <th>Role</th>
                                     </tr>
-                                    @foreach ($users as $u)
+                                    @foreach ($item->users as $u)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td> <a href="{{ route('employee.show',$u->id) }}">{{ $u->name }}</a> </td>

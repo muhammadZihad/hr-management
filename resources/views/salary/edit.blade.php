@@ -73,7 +73,8 @@
                     </div>
 
                 </div>
-                <div class="card-footer text-center"><button class="btn btn-success px-5" type="submit">Pay</button>
+                <div class="d-block text-center card-footer"><button class="btn btn-success px-5"
+                        type="submit">Pay</button>
                 </div>
             </form>
         </div>

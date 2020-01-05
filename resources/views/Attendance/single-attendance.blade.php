@@ -27,36 +27,36 @@
                     <th>
                         Check Out Status
                     </th>
-                    
+
                 </thead>
 
                 <tbody>
                     @foreach ($attendances as $a)
-                        <tr>
-                            
-                            <td>
-                                <p>{{ $a->date }}</p>
-                            </td>
-                            <td>
-                                <p>{{ $a->pivot->check_in }}</p>
-                                {{-- {{ $user->attendances()->date }} --}}
-                            </td>
-                            </td>
-                            <td>
-                                <p>{{ $a->pivot->check_out }}</p>
-                            </td>
-                            </td>
-                            <td>
-                                <p>In Time</p>
-                            </td>
-                            </td>
-                            <td>
-                                <p>Early</p>
-                            </td>
-                        </tr>
-                    @endforeach                  
+                    <tr>
+
+                        <td>
+                            <p>{{ $a->date }}</p>
+                        </td>
+                        <td>
+                            <p>{{ $a->pivot->check_in }}</p>
+                            {{-- {{ $user->attendances()->date }} --}}
+                        </td>
+                        </td>
+                        <td>
+                            <p>{{ $a->pivot->check_out }}</p>
+                        </td>
+                        </td>
+                        <td>
+                            <p>{{ $a->pivot->check_in_status }}</p>
+                        </td>
+                        </td>
+                        <td>
+                            <p>{{ $a->pivot->check_out_status }}</p>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
-                
+
             </table>
         </div>
     </div>
