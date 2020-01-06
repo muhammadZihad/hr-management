@@ -16,3 +16,4 @@
 
     # Handle Authorization Header
     RewriteC
+    
