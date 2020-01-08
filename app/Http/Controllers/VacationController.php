@@ -15,8 +15,9 @@ class VacationController extends Controller
      */
     public function index()
     {
-        
-        return view('Vacation.index')->with('vac', Vacation::all());
+        $newV = Vacation::where('status',null)->orderBy('created_at','desc')->get();
+        $oldV = Vacation::where('status','approved')->orWhere('status','rejected')->orderBy('created_at','desc')->get();
+        return view('Vacation.index')->with('newV', $newV)->with('oldV', $oldV);
     }
 
     /**
@@ -45,13 +46,13 @@ class VacationController extends Controller
         ]);
 
         $v = Vacation::create([
-            'user' => $user_id,
+            'user_id' => $user_id,
             'from' => $request->from,
             'to' => $request->to,
             'description' => $request->description,
         ]);
 
-        $v->users()->attach($user_id);
+        // $v->users()->attach($user_id);
         return redirect()->back();
     }
 
@@ -101,7 +102,7 @@ class VacationController extends Controller
     }
 
     public function vacApprove($id){
-        $v = Vacation::find($id);
+        $v = Vacation::find($id)->where('status',null)->first();
         $v->status = 'approved';
         $v->decidedBy = auth()->user()->id;
         $v->save();
@@ -109,7 +110,7 @@ class VacationController extends Controller
         return redirect()->back();
     }
     public function vacReject($id){
-        $v = Vacation::find($id);
+        $v = Vacation::find($id)->where('status',null)->first();
         $v->status = 'rejected';
         $v->decidedBy = auth()->user()->id;
         $v->save();
