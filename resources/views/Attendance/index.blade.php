@@ -41,31 +41,31 @@
                     $i=1;
                     @endphp
                     @foreach ($attendances as $a)
-                    @foreach ($a->users as $user)
-                    <tr>
-                        <td>#{{ $i++ }}</td>
-                        <td><a href="{{ route('single.attendance',['id' => $user->id]) }}">{{ $user->name }}</a></td>
-                        <td>
-                            <p>{{ $a->date }}</p>
-                        </td>
-                        <td>
-                            <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_in }}</p>
-                            {{-- {{ $user->attendances()->date }} --}}
-                        </td>
-                        </td>
-                        <td>
-                            <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_out }}</p>
-                        </td>
-                        </td>
-                        <td>
-                            <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_in_status }}</p>
-                        </td>
-                        </td>
-                        <td>
-                            <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_out_status }}</p>
-                        </td>
-                    </tr>
-                    @endforeach
+                        @foreach ($a->users as $user)
+                        <tr>
+                            <td>#{{ $i++ }}</td>
+                            <td><a href="{{ route('single.attendance',['id' => $user->id]) }}">{{ $user->name }}</a></td>
+                            <td>
+                                <p>{{ $a->date }}</p>
+                            </td>
+                            <td>
+                                <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_in }}</p>
+                                {{-- {{ $user->attendances()->date }} --}}
+                            </td>
+                            </td>
+                            <td>
+                                <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_out }}</p>
+                            </td>
+                            </td>
+                            <td>
+                                <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_in_status }}</p>
+                            </td>
+                            </td>
+                            <td>
+                                <p>{{ $user->attendances()->where('date', $a->date)->first()->pivot->check_out_status }}</p>
+                            </td>
+                        </tr>
+                        @endforeach
                     @endforeach
 
                 </tbody>
