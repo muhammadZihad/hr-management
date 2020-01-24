@@ -8,7 +8,7 @@
             <div class="table-responsive">
                 <table class="align-middle mb-0 table table-borderless table-striped table-hover sortable">
                     <thead>
-                       
+
                         <tr>
                             <th class="text-center">#</th>
                             <th>Name</th>
@@ -18,41 +18,41 @@
                             <th class="text-center">Approve</th>
                             <th class="text-center">Reject</th>
                         </tr>
-                        
+
                     </thead>
                     <tbody>
-                        @foreach($newV as $nV)                          
-                            <tr>
-                                <td class="text-center text-muted">1</td>
-                                <td>
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-    
-                                            <div class="widget-content-left flex2">
-                                                <div class="widget-heading"></div>
-                                                <div class="widget-subheading opacity-7">
-                                                    {{ $nV->user->name }}
-                                                </div>
+                        @foreach($newV as $nV)
+                        <tr>
+                            <td class="text-center text-muted">1</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading"></div>
+                                            <div class="widget-subheading opacity-7">
+                                                {{ $nV->user->name }}
                                             </div>
                                         </div>
                                     </div>
-                                </td>
+                                </div>
+                            </td>
 
-                                <td class="text-center">{{ $nV->from }}</td>
-                                <td class="text-center">{{ $nV->to }}</td>
-                                <td class="text-center">{{ $nV->description }}</td>
+                            <td class="text-center">{{ $nV->from }}</td>
+                            <td class="text-center">{{ $nV->to }}</td>
+                            <td class="text-center">{{ $nV->description }}</td>
 
-                                <td class="text-center">
-                                    <a href="{{ route('vac.approve', ['id' => $nV->user->id]) }}"
-                                        class="btn btn-success btn-sm">Approve</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{ route('vac.reject', ['id' => $nV->user->id]) }}"
-                                        class="btn btn-danger btn-sm">Reject</a>
-                                </td>
-                            </tr>                           
+                            <td class="text-center">
+                                <a href="{{ route('vac.approve', ['id' => $nV->id]) }}"
+                                    class="btn btn-success btn-sm">Approve</a>
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('vac.reject', ['id' => $nV->id]) }}"
+                                    class="btn btn-danger btn-sm">Reject</a>
+                            </td>
+                        </tr>
                         @endforeach
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -64,7 +64,7 @@
             <div class="table-responsive">
                 <table class="align-middle mb-0 table table-borderless table-striped table-hover sortable">
                     <thead>
-                       
+
                         <tr>
                             <th class="text-center">#</th>
                             <th>Name</th>
@@ -73,34 +73,34 @@
                             <th class="text-center">Description</th>
                             <th class="text-center">Decision</th>
                         </tr>
-                        
+
                     </thead>
                     <tbody>
-                        @foreach($oldV as $oV)                                    
-                                <tr>
-                                    <td class="text-center text-muted">1</td>
-                                    <td>
-                                        <div class="widget-content p-0">
-                                            <div class="widget-content-wrapper">
-        
-                                                <div class="widget-content-left flex2">
-                                                    <div class="widget-heading"></div>
-                                                    <div class="widget-subheading opacity-7">
-                                                        {{ $oV->user->name}}
-                                                    </div>
-                                                </div>
+                        @foreach($oldV as $oV)
+                        <tr>
+                            <td class="text-center text-muted">1</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading"></div>
+                                            <div class="widget-subheading opacity-7">
+                                                {{ $oV->user->name}}
                                             </div>
                                         </div>
-                                    </td>
+                                    </div>
+                                </div>
+                            </td>
 
-                                    <td class="text-center">{{ $oV->from }}</td>
-                                    <td class="text-center">{{ $oV->to }}</td>
-                                    <td class="text-center">{{ $oV->description }}</td>
+                            <td class="text-center">{{ $oV->from }}</td>
+                            <td class="text-center">{{ $oV->to }}</td>
+                            <td class="text-center">{{ $oV->description }}</td>
 
-                                    <td class="text-center">
-                                        <div class="badge badge-warning">{{ $oV->status }}</div>
-                                    </td>
-                                </tr>                                  
+                            <td class="text-center">
+                                <div class="badge badge-warning">{{ $oV->status }}</div>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                     {{-- {{ $oldV->links() }} --}}
