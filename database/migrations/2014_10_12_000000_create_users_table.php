@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('image')->nullable();
             $table->boolean('admin');
+            $table->boolean('su');
             $table->integer('salary');
             $table->integer('type_id');
             $table->integer('department_id');
